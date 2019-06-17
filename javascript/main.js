@@ -22,7 +22,20 @@ function createNote() {
 //validates the input
 function validateInput(input) {
 	if (input != null && input != "" && input != undefined && input.includes("<") == false && input.includes(">") == false && input.includes("+") == false) {
-		return true;
+		var used = false;
+		for(z = 0; z < list.length; z++){
+			if(list[z] == input){
+				used = true;
+			}
+			console.log(list[z] + " and " + input);
+		}
+		if(used == true){
+			alert("This Note Already Exists. No Duplicates Allowed.")
+			return false;
+		}else{
+			console.log("passed")
+			return true;
+		}
 	} else {
 		alert("Please Put An Actual Note In The Submit Box.")
 		return false;
@@ -38,7 +51,7 @@ function deleteNote(elmnt) {
 	var i = 0;
 	note.classList.add("deleted")
 	note.innerHTML = ""
-	window.setTimeout(removeNote, 200)
+	window.setTimeout(removeNote, 150)
 
 	function removeNote() {
 		while (list[i] != noteValue) {

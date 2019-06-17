@@ -1,12 +1,10 @@
 Todo Goals
 	Add Color Options and Crossoff Button (Click Button Then on a   individual Note, Click Button again to disable)
-    Add Moving Animation
 	Create An Improved Moving Note Animation. (Notes Actually Move To The Other's Spot, instead of vanish and reappear.)
 
 	
 Todo Bugfixing
-	Add Max Cap To Note Length And To # of Notes.
-    Fix Notes of same value getting mixed up(Top one moves).
+
 	
 	
 Currently Working On
@@ -26,4 +24,9 @@ Finished
 	Created And Implemented A Simple Moving Note Animation
 	Discovered A Simple Way To Control Sibling Elements Using PreviousElementSibling and NextElementSibling.
 	
+	6/17/19
+	Allowed Larger Notes To Be Created
+	Fixed Delete Animation With Larger And Regular Sized Notes.
+	Added Max Cap To Length Of Notes
+	Prevented Duplicate Note Creation
 	
