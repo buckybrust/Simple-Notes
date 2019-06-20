@@ -14,6 +14,8 @@ function createNote() {
 	if (validateInput(input) == true) {
 		//Adds Input To Front Of List
 		list.unshift(input);
+		attributeList.unshift("n0nn");
+			console.log(attributeList);
 		//Generate List
 		generateList(list);
 	}
@@ -21,23 +23,29 @@ function createNote() {
 
 //validates the input
 function validateInput(input) {
-	if (input != null && input != "" && input != undefined && input.includes("<") == false && input.includes(">") == false && input.includes("+") == false) {
+	if (input != null && input != "" && input != undefined && input.includes("<") == false && input.includes(">") == false && input.includes("+") == false && input.toLowerCase().includes("fuck") == false) {
 		var used = false;
-		for(z = 0; z < list.length; z++){
-			if(list[z] == input){
+		for (z = 0; z < list.length; z++) {
+			if (list[z] == input) {
 				used = true;
 			}
-			console.log(list[z] + " and " + input);
 		}
-		if(used == true){
+		if (used == true) {
 			alert("This Note Already Exists. No Duplicates Allowed.")
 			return false;
-		}else{
-			console.log("passed")
+		} else {
 			return true;
 		}
+	} else if (input.toLowerCase().includes("fuck")) {
+		alert("Please use respectful language.")
+		return false;
+
+
+	} else if (input.includes("<") || input.includes(">") || input.includes("+")) {
+		alert("ERROR: Cannot include symbols <, >, or +")
+		return false;
 	} else {
-		alert("Please Put An Actual Note In The Submit Box.")
+		alert("ERROR: Please include text before submitting note.")
 		return false;
 	}
 }
@@ -58,6 +66,7 @@ function deleteNote(elmnt) {
 			i++;
 		}
 		list.splice(i, 1);
+		attributeList.splice(i, 1);
 		generateList(list);
 	}
 
@@ -73,15 +82,21 @@ function moveNote(elmnt, direction) {
 	}
 	var saveSpot1 = list[i];
 	var saveSpot2;
+	var saveAttribute1 = attributeList[i];
+	var saveAttribute2;
 	if (direction == true) {
 		if (i > 0) {
 			saveSpot2 = list[i - 1]
-			list.splice((i - 1), 2, saveSpot1, saveSpot2)
+			saveAttribute2 = attributeList[i - 1]
+			list.splice((i - 1), 2, saveSpot1, saveSpot2);
+			attributeList.splice((i - 1), 2, saveAttribute1, saveAttribute2);
 		}
 	} else {
 		if (i != list.length - 1) {
 			saveSpot2 = list[i + 1];
-			list.splice((i), 2, saveSpot2, saveSpot1)
+			saveAttribute2 = attributeList[i + 1];
+			list.splice((i), 2, saveSpot2, saveSpot1);
+			attributeList.splice((i), 2, saveAttribute2, saveAttribute1);
 		}
 	}
 	var y = 0;
@@ -121,9 +136,38 @@ function moveNote(elmnt, direction) {
 function generateList(arry) {
 	notebox.innerHTML = "";
 	saveNew();
+
+	
+	var listNum = 0;
 	for (i = 0; i < arry.length; i++) {
 		if (list[i] != "" && list[i] != undefined) {
-			notebox.innerHTML += "<div class='note'><p>" + arry[i] + "</p><div class='delete' title='Delete' onclick='deleteNote(this);'><img src='pics/trash%20can.png' class='trashpic'></div><div class='movediv'><div class='up tinybutton' title='Move Up' onclick='moveNote(this, true);'><img src='pics/up%20arrow.png' class='arrowpic'></div><div class='down tinybutton' title='Move Down' onclick='moveNote(this, false);'><img src='pics/down%20arrow.png' class='arrowpic'></div></div></div>"
+			
+			//Checks For Background Color
+			var bColor = "";
+			bColor = NumberToColor(attributeList[i].slice(1,2));
+			
+			//Checks For Crossed Note
+			var crossed = "";
+			if(attributeList[i].slice(0,1) == "y"){
+				crossed = "crossed"
+			}
+			
+			//Checks For Bolded Note
+			var bold = "";
+			if(attributeList[i].slice(2,3) == "y"){
+				bold = "bold"
+			}
+			
+			//Checks For Italic Note
+			var italic = "";
+			if(attributeList[i].slice(3,4) == "y"){
+				italic = "italic"
+			}
+			
+			
+			//Generates Note
+			notebox.innerHTML += "<div class='note' id='note"+ listNum + "'><p onclick='noteClick(this);' class='" + crossed + " " + bold + " " + italic + "' style='background-color:" + bColor + ";'>" + arry[i] + "</p><div class='delete' title='Delete' onclick='deleteNote(this);'><img src='pics/trash%20can.png' class='trashpic'></div><div class='movediv'><div class='up tinybutton' title='Move Up' onclick='moveNote(this, true);'><img src='pics/up%20arrow.png' class='arrowpic'></div><div class='down tinybutton' title='Move Down' onclick='moveNote(this, false);'><img src='pics/down%20arrow.png' class='arrowpic'></div></div></div>"
+			listNum++;
 		}
 	}
 }

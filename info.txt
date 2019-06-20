@@ -1,15 +1,17 @@
 Todo Goals
-	Add Color Options and Crossoff Button (Click Button Then on a   individual Note, Click Button again to disable)
 	Create An Improved Moving Note Animation. (Notes Actually Move To The Other's Spot, instead of vanish and reappear.)
-
+	Add Note Size Control Buttons (Small Medium Large)
 	
 Todo Bugfixing
 
 	
 	
 Currently Working On
-    Moving Note Animation
-	
+	Closing Color Menu
+
+	Still Todo In This
+		Implement The Color Chosen Shows Up In Place of The Word Menu.
+
 
 Finished
     6/7/19
@@ -29,4 +31,17 @@ Finished
 	Fixed Delete Animation With Larger And Regular Sized Notes.
 	Added Max Cap To Length Of Notes
 	Prevented Duplicate Note Creation
+	Started Creation Of Styling Notes
+
+	6/18/19
+	Implemented Saved And Loaded An Attribute List
+	Implemented Color Changing And Crossing Off Notes And Saving It.
+	Added A System To Turn Off Other Buttons When One Was Clicked(To Prevent Multiple Changes At Once)
+	Started Menu Button For Colors
+	
+	6/19/19
+	Finished Menu For Colors And Fully implemented The Buttons (Improved The Background Code)
+	Added Two New Attributes Italic, and Bold
+	
+	
 	

@@ -1,5 +1,4 @@
-loadArray();
-
+var attributeList = [];
 
 //Saves The New Array To Local Storage
 function saveNew() {
@@ -16,9 +15,22 @@ function saveNew() {
         } else {
             newSave = newSave.slice(0, -1)
         }
+		
+		newSave += "|"
+		
+		for (x = 0; x < attributeList.length; x++) {
+            newSave += attributeList[x] + "+"
+
+        }
+        if (newSave.includes("++")) {
+            newSave = newSave.slice(0, -2);
+        } else {
+            newSave = newSave.slice(0, -1)
+        }
 
         console.log(newSave)
         console.log(list)
+		console.log(attributeList)
         localStorage.setItem("HBNoteApp", newSave)
     } else {
         alert("You Don't Have Web Storage Support. Try A More Up To Date Browser.")
@@ -32,7 +44,11 @@ function loadArray() {
 
     //Tests Browser Storage Support
     if (typeof (Storage) !== "undefined") {
-        list = localStorage.getItem("HBNoteApp").split("+");
+		var allList = localStorage.getItem("HBNoteApp").split("|")
+        list = allList[0].split("+");
+		if(allList[1] != undefined){
+			attributeList = allList[1].split("+");
+		}
         generateList(list);
     }
 }

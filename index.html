@@ -13,24 +13,69 @@
 	<link rel="shortcut icon" href="pics/favicon.png">
 
 	<!-- Title Goes Here -->
-	<title>Its Totes about Notes</title>
+	<title>It's Totes about Notes</title>
 </head>
 
 <body>
 	<main>
-		<h1>Notes</h1>
-		<div id="submitbox">
-			<input type="text" id="input" maxlength="60">
-			<button onclick="createNote();" id="submit">Submit</button>
-		</div>
-		<div id="notebox">
+		<div id="colormenu" style="">
+			
+			<div onclick="activateColor('orchid', this);" class="colorbutton" style="background-color:orchid"></div>
+			
+			<div onclick="activateColor('orange', this);" class="colorbutton" style="background-color:orange"></div>
+			
+			<div onclick="activateColor('mediumpurple', this);" class="colorbutton" style="background-color:mediumpurple"></div>
+
+			<div onclick="activateColor('lightgreen', this);" class="colorbutton" style="background-color:green"></div>
+
+			<div onclick="activateColor('yellow', this);" class="colorbutton" style="background-color:yellow"></div>
+
+			<div onclick="activateColor('indianred', this);" class="colorbutton" style="background-color:red"></div>
+
+			<div onclick="activateColor('lightblue', this);" class="colorbutton" style="background-color:blue"></div>
+
+			<div onclick="activateColor('clear', this);" class="colorbutton" style="background-color:#e3e3e3"></div>
+			
+			<div onclick="clearActiveButtons();activeColor = '';activebutton = '';document.getElementById('colormenu').style.visibility = 'hidden';" class="colorbutton" style="background: url(pics/cancelsign.png); background-size: cover;background-position: center;"></div>
 
 		</div>
+		<div id="buttondiv">
 
-        
+
+
+			<div onclick="openColorMenu();" class="bigbutton" id="colormenubutton" title="Highlighter Colors">
+				<div id="colordisplay" style="width:30px; height:30px;margin:auto;background-color:white;margin-top:10px;"></div>
+			</div>
+
+			<div onclick="clickButton('cross', this);" class="bigbutton" id="crossbutton" title="Line Through">
+				<div style = "width:35px; height:7px; margin:auto; background-color:black;margin-top:22px;"></div>
+			</div>
+			
+			<div onclick="clickButton('bold', this);" class="bigbutton" id="boldbutton" title="Bold">
+				<p style="font-weight: bolder; font-family: monospace;font-size:40px;margin:0px;margin-left:13px;">B</p>
+			</div>
+			
+			<div onclick="clickButton('italic', this);" class="bigbutton" id="italicbutton" title="Italic">
+				<p style="font-style: italic; font-family: monospace;font-size:40px;margin:0px;margin-left:13px;">I</p>
+			</div>
+		</div>
+		<div id="notepage">
+			<h1>Notes</h1>
+			<div id="submitbox">
+				<input type="text" id="input" maxlength="1000WWW">
+				<button onclick="createNote();" id="submit">Submit</button>
+			</div>
+			<div id="notebox">
+
+			</div>
+
+
+		</div>
 	</main>
 	<script src="javascript/main.js"></script>
-    <script src="javascript/saveload.js"></script>
+	<script src="javascript/saveload.js"></script>
+	<script src="javascript/buttons.js"></script>
 </body>
 
 </html>
+<p onclick='noteClick(this);' class='" + crossed + "' style='background-color:" +  + "'>

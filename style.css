@@ -8,10 +8,62 @@ h1{
 	margin-bottom:5px;
 }
 main{
-	width:500px;
 	margin:auto;
+	width:710px;
+}
+#notepage{
+	width:500px;
 	background-color:white;
 	padding:10px;
+	float:left;
+	display:inline-block;
+}
+#buttondiv{
+	background-color:white;
+	width: 67px;
+	float:left;
+	margin-right:10px;
+	display: inline-block;
+}
+.bigbutton{
+	width:48px;
+	height:48px;
+	margin:8px;
+	background-color:#e2e2e2;
+	border:1px solid white;
+	transition: background-color 100ms, color 100ms;
+	cursor:pointer;
+	background-color:#e2e2e2;
+	color:black;
+	border-radius:7px;
+}
+
+.colorbutton{
+	display:block;
+	float:left;
+	width:25px; 
+	height:25px;
+	cursor:pointer;
+	border:1px solid black;
+}
+.colorbutton:hover{
+	border:1px solid white;
+}
+
+.activebutton, .activecolor{
+	background-color:gray;
+	color:white;
+
+}
+
+#colormenu{
+	visibility: hidden;
+	background-color:black;
+	width:82px;
+	height:82px;
+	position:fixed;
+	top:90px;
+	padding:3px;
 }
 
 #submit, #input{
@@ -68,7 +120,6 @@ main{
     /*height: 38px;*/
 	margin:10px 0px;
 	transition:background-color 200ms;
-	padding-left:5px;
 }
 .note.big{
 	height:76px;
@@ -79,18 +130,21 @@ main{
 }
 
 .note p{
-	width:400px;
+	width:410px;
 	margin:0;
 	padding:0;
 	display:inline;
 	display:inline-block;
 	word-wrap: break-word;
+	cursor:default;
+	padding-left:5px;
+	transition: background-color 150ms;
 }
 .delete{
 	background-color:red;
 	float:right;
 	width:38px;
-	height:38px;
+	height:37px;
 	margin:0;
 	padding:0;
 	opacity:0;
@@ -121,7 +175,7 @@ main{
 }
 
 .up{
-	margin-bottom:2px;
+	margin-bottom:1px;
 	background-color:black;
 }
 
@@ -179,4 +233,12 @@ main{
 	100%{opacity:1;}
 }
 
-
+.crossed{
+	text-decoration: line-through;
+}
+.bold{
+	font-weight:bold;
+}
+.italic{
+	font-style:italic;
+}
